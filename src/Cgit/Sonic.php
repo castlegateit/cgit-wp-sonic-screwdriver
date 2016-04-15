@@ -12,7 +12,7 @@ class Sonic
     private static $types = [
         'gif' => 'image/gif',
         'jpeg' => 'image/jpeg',
-        'jpg' => 'image/jpg',
+        'jpg' => 'image/jpeg',
         'png' => 'image/png',
         'svg' => 'image/svg+xml',
     ];
