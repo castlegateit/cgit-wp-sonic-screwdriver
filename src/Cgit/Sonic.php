@@ -18,6 +18,16 @@ class Sonic
     ];
 
     /**
+     * Private constructor
+     *
+     * @return void
+     */
+    private function __construct()
+    {
+        // :(
+    }
+
+    /**
      * Does variable contain item?
      *
      * Does a string contain a particular substring or does an array contain a
