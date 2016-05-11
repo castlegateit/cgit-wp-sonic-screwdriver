@@ -137,7 +137,7 @@ class Sonic
 
         $data = base64_encode(file_get_contents($file));
 
-        return 'data:' . $type . ';base64' . $data;
+        return 'data:' . $type . ';base64,' . $data;
     }
 
     /**
