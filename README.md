@@ -18,7 +18,11 @@ The `Cgit\Sonic` class provides a number of static methods to solve common front
 
 *   `Sonic::formatUri($str, $human = false)`. Formats a URI-like string to be a valid URI. If `$human` is true, it removes the scheme from the URI.
 
-*   `Sonic::formatLink($str, $text = false)`. Returns an HTML link based on a URI-like string and with the content `$text`. If `$text` is not specified, a human-readable version of the URI is used instead.
+*   `Sonic::formatLink($str, $text = false)`. Returns a HTML link based on a URI-like string and with the content `$text`. If `$text` is not specified, a human-readable version of the URI is used instead.
+
+*   `Sonic::telephoneLink($tel, $text = false)`. Returns a HTML telephone link using the `tel:` protocol with the content `$text`. If `$text` is not specified, the original telephone number string is used. Telephone numbers with spaces and parenthesis are accepted and converted if required.
+
+*   `Sonic::formatTelephone($tel)` Returns a `tel:` protocol friendly telephone number, for use in links. Parenthesis and spaces are removed.
 
 *   `Sonic::normalizeHeadings($content, $limit = 2)`. Promote or demote headings to fit with the surrounding document outline.
 

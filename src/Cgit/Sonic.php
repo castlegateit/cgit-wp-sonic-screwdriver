@@ -201,6 +201,42 @@ class Sonic
     }
 
     /**
+     * Converts a telephone number into an HTML link.
+     *
+     * @param string $tel Telephone number
+     * @param mixed $text Link text
+     *
+     * @return string HTML link
+     */
+    public static function telephoneLink($tel, $text = false)
+    {
+        if (!$text) {
+            $text = $tel;
+        }
+
+        $link = self::formatTelephone($tel);
+
+        return '<a href="tel:' . $link . '">' . $text . '</a>';
+    }
+
+    /**
+     * Converts a telephone number into a tel: protocol friendly string.
+     *
+     * @param string $tel Telephone number
+     *
+     * @return string Telephone number
+     */
+    public static function formatTelephone($tel)
+    {
+        $patterns = [
+            '/\([0-9]\)/',
+            '/\s/'
+        ];
+
+        return preg_replace($patterns, '', $tel);
+    }
+
+    /**
      * Normalize headings
      *
      * Promote or demote headings within content to fit surrounding document
