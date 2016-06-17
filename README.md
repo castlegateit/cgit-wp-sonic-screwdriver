@@ -43,6 +43,7 @@ use Cgit\Sonic\Video;
 
 $video = new Video($youtube_video_uri);
 
+echo $video->id; // Video ID used by YouTube or Vimeo
 echo $video->uri; // Full URI of the video on the web
 echo $video->embedUri; // URI of the video used in iframes
 echo $video->image; // Thumbnail image for the video

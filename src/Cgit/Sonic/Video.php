@@ -98,6 +98,7 @@ class Video
      */
     private function reset()
     {
+        $this->id = null;
         $this->input = null;
         $this->uri = null;
         $this->embedUri = null;
@@ -113,11 +114,11 @@ class Video
      */
     private function updateVimeo()
     {
-        $id = preg_replace('/.*\/(\w+)/', '$1', $this->input);
-        $image_path = 'http://vimeo.com/api/v2/video/' . $id . '.php';
+        $this->id = preg_replace('/.*\/(\w+)/', '$1', $this->input);
+        $image_path = 'http://vimeo.com/api/v2/video/' . $this->id . '.php';
         $image_file = $file = file_get_contents($image_path);
 
-        $this->uri = '//player.vimeo.com/video/' . $id;
+        $this->uri = '//player.vimeo.com/video/' . $this->id;
         $this->embedUri = $this->uri;
 
         if ($image_file) {
@@ -132,11 +133,11 @@ class Video
      */
     private function updateYoutube()
     {
-        $id = preg_replace('/.*[\/=](\w+)/', '$1', $this->input);
+        $this->id = preg_replace('/.*[\/=](\w+)/', '$1', $this->input);
 
-        $this->uri = '//www.youtube.com/watch?v=' . $id;
-        $this->embedUri = '//www.youtube.com/embed/' . $id;
-        $this->image = '//i.ytimg.com/vi/' . $id . '/hqdefault.jpg';
+        $this->uri = '//www.youtube.com/watch?v=' . $this->id;
+        $this->embedUri = '//www.youtube.com/embed/' . $this->id;
+        $this->image = '//i.ytimg.com/vi/' . $this->id . '/hqdefault.jpg';
     }
 
     /**
