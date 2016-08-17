@@ -263,11 +263,11 @@ class Sonic
             return $content;
         }
 
-        return preg_replace_callback('/(<\/?)h(\d)/', function($matches) {
+        return preg_replace_callback('/(<\/?)h(\d)/', function($matches) use ($levels, $diff) {
             $level = intval($matches[2]) + $diff;
-            $tag = in_array($level, $levels) ? 'h' + $level : 'p';
+            $tag = in_array($level, $levels) ? 'h' . $level : 'p';
 
-            return $matches[1] + $tag;
+            return $matches[1] . $tag;
         }, $content);
     }
 
