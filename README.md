@@ -34,6 +34,24 @@ The `Cgit\Sonic` class provides a number of static methods to solve common front
 
 *   `Sonic::truncateWords($str, $limit, $after = ' &#8230;')`. Truncates a string to `$limit` words and appends `$after` if the string has been truncated.
 
+## Posts ##
+
+The `Cgit\Sonic\Post` provides slightly easier access to the final, filtered values of various WordPress post properties, including content and excerpts. It works inside or outside the loop. The constructor requires the post ID:
+
+~~~ php
+use Cgit\Sonic\Post;
+
+$sonic_post = new Post(16);
+
+echo $sonic_post->id;
+echo $sonic_post->title;
+echo $sonic_post->url;
+echo $sonic_post->content;
+echo $sonic_post->excerpt;
+~~~
+
+It also provides access to the raw `WP_Post` object via the `post` property.
+
 ## Videos ##
 
 The plugin provides `Cgit\Sonic\Videos` to handle embedding videos. The purpose of this class is to take an uncertain input and return a predictable result.
