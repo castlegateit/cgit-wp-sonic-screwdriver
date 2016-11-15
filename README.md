@@ -34,6 +34,8 @@ The `Cgit\Sonic` class provides a number of static methods to solve common front
 
 *   `Sonic::truncateWords($str, $limit, $after = ' &#8230;')`. Truncates a string to `$limit` words and appends `$after` if the string has been truncated.
 
+*   `Sonic::formatAttributes($atts)`. Returns a string containing HTML attributes based on an associative array. Supports nested arrays, which are converted to space-separated attribute values.
+
 ## Posts ##
 
 The `Cgit\Sonic\Post` provides slightly easier access to the final, filtered values of various WordPress post properties, including content and excerpts. It works inside or outside the loop. The constructor requires the post ID:

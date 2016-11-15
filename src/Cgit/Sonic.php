@@ -392,4 +392,29 @@ class Sonic
 
         return $truncated . $after;
     }
+
+    /**
+     * Format HTML attributes
+     *
+     * Takes an associative array of attributes and returns the keys and values
+     * as HTML attributes. Values can also be arrays, which will be converted
+     * into a space-separated list on output.
+     *
+     * @param array $attr
+     * @return string
+     */
+    public static function formatAttributes($attr = [])
+    {
+        $items = [];
+
+        foreach ($attr as $key => $value) {
+            if (is_array($value)) {
+                $value = implode(' ', $value);
+            }
+
+            $items[] = $key . '="' . $value . '"';
+        }
+
+        return implode(' ', $items);
+    }
 }
