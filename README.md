@@ -54,6 +54,56 @@ echo $sonic_post->excerpt;
 
 It also provides access to the raw `WP_Post` object via the `post` property.
 
+## Images ##
+
+The `Cgit\Sonic\Image` class provides a slightly more consistent way of accessing images, featured images, and ACF image fields. The constructor lets you specify the image (or post) ID:
+
+~~~ php
+use Cgit\Sonic\Image;
+
+$image = new Image($image_id); // use image with ID
+$image = new Image($post_id); // use featured image for post with ID
+$image = new Image(); // try to use featured image for current $post
+~~~
+
+You can also specify the image after creating the instance:
+
+~~~ php
+$image->useImage($image_id); // use image
+$image->usePost($post_id); // use featured image from post
+$image->useField($field_name, $post_id); // use ACF image field
+~~~
+
+Getting image data:
+
+~~~ php
+$image->getUrl($size); // get image URL (size optional)
+$image->getMeta(); // get all image data (alt, caption, etc.)
+$image->getMeta('alt'); // get single image data field
+$image->getElement($size, $atts); // get HTML <img> or <picture>
+~~~
+
+Example `<img>` element:
+
+~~~ php
+echo $image->getElement('medium', [
+    'alt' => 'Example image',
+    'class' => 'example',
+]);
+~~~
+
+Example responsive `<picture>` image element, where the size keys are the image sizes and the size values are the corresponding media queries:
+
+~~~ php
+echo $image->getElement([
+    'medium' => '(max-width: 480px)',
+    'large' => '(max-width: 960px)',
+], [
+    'alt' => 'Example image',
+    'class' => 'example',
+]);
+~~~
+
 ## Videos ##
 
 The plugin provides `Cgit\Sonic\Videos` to handle embedding videos. The purpose of this class is to take an uncertain input and return a predictable result.
