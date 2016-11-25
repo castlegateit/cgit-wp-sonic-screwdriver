@@ -144,6 +144,13 @@ class Image
         $obj_type = get_post_mime_type($this->id);
         $obj_file = $obj_meta['_wp_attached_file'][0];
 
+        // Retrieve alt text if available
+        $alt = '';
+
+        if (isset($obj_meta['_wp_attachment_image_alt'])) {
+            $alt = $obj_meta['_wp_attachment_image_alt'][0];
+        }
+
         // Assign the relevant information to the instance
         $this->meta = [
             'url' => $this->getUrl(),
@@ -151,7 +158,7 @@ class Image
             'file_path' => wp_upload_dir()['basedir'] . '/' . $obj_file,
             'mime_type' => $obj_type,
             'title' => $obj->post_title,
-            'alt' => $obj_meta['_wp_attachment_image_alt'][0],
+            'alt' => $alt,
             'caption' => $obj->post_excerpt,
             'description' => apply_filters('the_content', $obj->post_content),
         ];
