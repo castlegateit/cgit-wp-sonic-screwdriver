@@ -122,3 +122,49 @@ echo $video->link; // Thumbnail image linked the full video
 ~~~
 
 The constructor accepts any reasonable YouTube or Vimeo URI format or `<iframe>` embed code (i.e. anything a user might paste into a custom field). You can change the input string using the `$video->update($new_input_string)` method and all the instance properties will update automatically.
+
+## Dates and times ##
+
+The `Cgit\Sonic\DateTime` class provides some convenient ways of interpreting and formatting dates and date ranges. The constructor takes one or two arguments; if two arguments are provided, they are assumed to be the start and end times in a range of times. If integers are provided, they are assumed to be Unix times; otherwise, the input will be converted to a time via `strtotime()`.
+
+~~~ php
+use Cgit\Sonic\DateTime;
+
+$date = new DateTime(1420070400); // create time from Unix time
+$date = new DateTime(1420070400, 1420071000); // create range from Unix times
+$date = new DateTime('2015-01-01'); // create time from string
+$date = new DateTime('2015-01-01', '2015-01-02'); // create range from string
+~~~
+
+You can also set the time, or the start and end times using methods:
+
+~~~ php
+$date->set($start);
+$date->set($start, $end);
+$date->setStart($start);
+$date->setEnd($end);
+~~~
+
+You can return the values in their default formats:
+
+~~~ php
+$date->get();
+$date->getStart();
+$date->getEnd();
+$date->getRange(); // return a range of times or dates
+$date->getInterval(); // return the interval between the times
+~~~
+
+The default formats can be modified:
+
+~~~ php
+$date->setFormat('j F Y'); // single date format
+$date->setRangeFormats([
+    'time'  => ['H:s',   '&ndash;', 'H:s d F Y'],
+    'day'   => ['d',     '&ndash;', 'd F Y'    ],
+    'month' => ['d F',   '&ndash;', 'd F Y'    ],
+    'year'  => ['d F Y', '&ndash;', 'd F Y'    ],
+]);
+~~~
+
+Each array in the range formats represents the start date, the string to separate the two times, and the end date. In addition to the usual [PHP date formats](http://php.net/manual/en/function.date.php), you can use the string `MySQL` to get a string suitable for MySQL `DATETIME` fields.
