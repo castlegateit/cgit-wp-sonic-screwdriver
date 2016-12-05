@@ -218,11 +218,9 @@ class DateTime
      * @param array $formats
      * @return string
      */
-    public function getRange($formats = null)
+    public function getRange($formats = [])
     {
-        if (is_null($formats)) {
-            $formats = $this->rangeFormats;
-        }
+        $formats = array_merge($this->rangeFormats, $formats);
 
         // Default format is a range of years
         $format = $formats['year'];
