@@ -229,8 +229,8 @@ class Sonic
     public static function formatTelephone($tel)
     {
         $patterns = [
-            '/\([0-9]\)/',
-            '/\s/'
+            '/\([0-9]+\)/',
+            '/\s+/'
         ];
 
         return preg_replace($patterns, '', $tel);
