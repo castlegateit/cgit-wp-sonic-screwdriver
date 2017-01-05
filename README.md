@@ -83,6 +83,8 @@ $image->getMeta('alt'); // get single image data field
 $image->getElement($size, $atts); // get HTML <img> or <picture>
 ~~~
 
+The following metadata is available:  url, file_name, file_path, mime_type, title, alt, caption, description.
+
 Example `<img>` element:
 
 ~~~ php
