@@ -1,5 +1,7 @@
 # Castlegate IT Sonic Screwdriver #
 
+**Development of Castlegate IT Sonic Screwdriver has now stopped. We recommend you use the [Monolith](https://github.com/castlegateit/monolith) library instead.**
+
 The Castlegate IT Sonic Screwdriver plugin is a collection of utilities for making WordPress theme development a bit easier. Strictly speaking, it does not have to be used with WordPress; it could also be used with any front end development project.
 
 ## Static methods ##
